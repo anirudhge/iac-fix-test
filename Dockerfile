@@ -8,4 +8,6 @@ COPY . /app
 
 # NOTE: no USER instruction — the container runs as root.
 # Trivy config flags this as DS-0002 / AVD-DS-0002 (run as non-root).
+RUN adduser -D -u 10001 appuser
+USER appuser
 CMD ["python3", "-m", "http.server", "8080"]
